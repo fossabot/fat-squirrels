@@ -4,8 +4,8 @@ description: Simple React-Node-MySql App Template
 type: application
 icon: 'https://github.com/projectkerberus/kerberus-dashboard/blob/main/docs/media/square_black_logo.png'
 
-version: 0.1.2
-appVersion: 0.1.2
+version: 0.1.3
+appVersion: 0.1.3
 
 maintainers:
   - name: Mauro Sala
