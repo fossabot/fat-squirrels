@@ -1,0 +1,8 @@
+site_name: "ReNoMy App template"
+site_description: "fat-squirrels"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core

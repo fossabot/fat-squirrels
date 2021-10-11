@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fat-squirrels
+  annotations:
+    kuma.io/sidecar-injection: enabled
+    kuma.io/mesh: fat-squirrels-mesh

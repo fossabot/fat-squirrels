@@ -1,0 +1,36 @@
+{{- if .Values.app }}
+---
+{{- end }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: renomy-app
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    component: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: renomy-app
+  template:
+    metadata:
+      labels:
+        app: renomy-app
+        component: {{ .Release.Namespace }}
+    spec:
+      containers:
+        - name: renomy-app
+          image: {{ .Values.images.app }}
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "125m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_API_URL
+              value: https://{{ .Values.apiUrl }}/

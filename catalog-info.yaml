@@ -1,0 +1,104 @@
+# Frontend
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fat-squirrels-fe
+  description: ReNoMy Frontend
+  links:
+    - url: https://github.com/maurosala/fat-squirrels
+      title: "fat-squirrels"
+      icon: "dashboard"
+  annotations:
+    github.com/project-slug: maurosala/fat-squirrels
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: "fat-squirrels"
+    backstage.io/kubernetes-label-selector: "component=fat-squirrels"
+    sonarqube.org/project-key: maurosala_fat-squirrels
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "maurosala"
+  consumesApis:
+    - fat-squirrels-api
+  dependsOn: ["component:fat-squirrels-be"]
+  system: fat-squirrels-system
+---
+# Backend
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fat-squirrels-be
+  description: ReNoMy Backend
+  links:
+    - url: https://github.com/maurosala/fat-squirrels
+      title: "fat-squirrels"
+      icon: "dashboard"
+  annotations:
+    github.com/project-slug: maurosala/fat-squirrels
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: "fat-squirrels"
+    backstage.io/kubernetes-label-selector: "component=fat-squirrels"
+    sonarqube.org/project-key: maurosala_fat-squirrels
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "maurosala"
+  providesApis:
+    - fat-squirrels-api
+  dependsOn: ["resource:fat-squirrels-db"]
+  system: fat-squirrels-system
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: fat-squirrels-api
+  description: Todo API
+  links:
+    - url: https://krateo.io
+      title: "krateo.io"
+      icon: "dashboard"
+  tags:
+    - openapi
+    - rest
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: "kerberus"
+  apiProvidedBy: fat-squirrels-be
+  apiConsumedBy:
+    - fat-squirrels-fe
+  definition:
+    $text: https://github.com/maurosala/fat-squirrels/blob/main/openapi.yaml
+  system: fat-squirrels-system
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: fat-squirrels-system
+  description: AWS Cloud
+spec:
+  owner: "kerberus"
+  domain: fat-squirrels-domain
+  system: fat-squirrels-system
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: fat-squirrels-db
+  description: Stores todos
+  links:
+    - url: https://krateo.io
+      title: "krateo.io"
+      icon: "dashboard"
+spec:
+  type: database
+  owner: "kerberus"
+  system: fat-squirrels-system
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: fat-squirrels-domain
+  description: fat-squirrels domain
+spec:
+  owner: "kerberus"

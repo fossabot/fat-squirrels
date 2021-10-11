@@ -1,0 +1,18 @@
+{{- if .Values.app }}
+---
+{{- end }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-svc
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    component: {{ .Release.Namespace }}
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: renomy-api
