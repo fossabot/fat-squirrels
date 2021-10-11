@@ -17,7 +17,7 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: "maurosala"
+  owner: "kerberus"
   consumesApis:
     - fat-squirrels-api
   dependsOn: ["component:fat-squirrels-be"]
@@ -42,7 +42,7 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: "maurosala"
+  owner: "kerberus"
   providesApis:
     - fat-squirrels-api
   dependsOn: ["resource:fat-squirrels-db"]
