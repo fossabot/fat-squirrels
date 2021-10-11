@@ -1,0 +1,19 @@
+apiVersion: v1
+entries:
+  renomy-app-template:
+  - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2021-10-11T20:01:11.266833352Z"
+    description: Simple React-Node-MySql App Template
+    digest: 726bbbbd5f31407789770fd525934f75b63d92b710e33ff7db7a831ed2378453
+    icon: https://github.com/projectkerberus/kerberus-dashboard/blob/main/docs/media/square_black_logo.png
+    maintainers:
+    - email: mauro.sala@kiratech.it
+      name: Mauro Sala
+      url: https://www.kiratech.it
+    name: renomy-app-template
+    type: application
+    urls:
+    - https://github.com/maurosala/fat-squirrels/releases/download/renomy-app-template-0.1.2/renomy-app-template-0.1.2.tgz
+    version: 0.1.2
+generated: "2021-10-11T20:01:11.266840753Z"
