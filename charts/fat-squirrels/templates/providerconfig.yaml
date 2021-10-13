@@ -6,6 +6,8 @@ kind: ProviderConfig
 metadata:
   name: aws-stack-template-provider
   namespace: {{ .Release.Namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: PruneLast=true
 spec:
   credentials:
     source: Secret
